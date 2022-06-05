@@ -1,5 +1,10 @@
 # Getting Started with Create React App
 
+## Pending:
+
+Agregar los tipos y colores
+Problema con el search
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
