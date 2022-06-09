@@ -3,7 +3,7 @@ import { useEffect, useState, useLayoutEffect, createContext } from "react";
 import "./App.css";
 import Cards from "./components/Cards";
 import Search from "./components/Search";
-import Back from "./Back2.jpg";
+
 import ModalDetails from "./components/ModalDetails";
 
 export const DataContext = createContext();
