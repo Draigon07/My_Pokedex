@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+button {
+  cursor: pointer;
+}
+
 .cards_container {
   display: flex;
   flex-flow: row wrap;
@@ -9,40 +13,70 @@
   gap: 1%;
   text-transform: capitalize;
   justify-content: center;
-  padding: 2px;
-  background-color: rgb(223, 219, 219);
+  padding: 5px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: #ccc;
+  width: 95%;
+  border: 1px solid #000;
 }
 
 .poke-card {
-  width: 300px;
+  display: flex;
+  flex-flow: column wrap;
+  min-width: 110px;
+  max-width: 140px;
+  min-height: 250px;
+  max-height: 250px;
   text-align: center;
   margin-top: 2px;
-  color: black;
   font-family: monospace;
   font-size: 1rem;
   border-radius: 5px;
-  padding: 5px;
+  padding: 1px;
+  background-color: #fff;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 0px;
+  border: 2px solid rgb(136, 135, 135);
+  cursor: pointer;
+  transition: all 0.9s;
+}
+
+.poke-card:focus {
+  width: 145px;
+}
+
+.poke-card h2 {
+  color: #000;
 }
 
 .poke-card picture {
-  width: 200px;
+  min-width: 170px;
+  max-width: 180px;
+  height: 50%;
   border-radius: 5px;
+  opacity: 0.9;
 }
 
 .poke-card picture img {
   object-fit: cover;
-  width: 100%;
-  padding: 10px;
-  background-color: rgb(138, 138, 138);
-  border-radius: 25px;
+  min-width: 100px;
+  background-color: rgb(214, 212, 212);
+  border-radius: 10px;
 }
 
-.detail_button {
-  padding: 0.6rem;
-  margin: 2px;
+.card_buttons {
+  padding: 0.3rem;
+  color: red;
+  border: none;
+  text-transform: capitalize;
+  margin-right: 5px;
   border-radius: 5px;
-  background-color: azure;
-  cursor: pointer;
+  font-size: 0.8rem;
+  min-width: 90px;
+  margin: 0.2rem 0;
+  cursor: none;
 }
 
 .search_pokemon_container {

@@ -1,11 +1,13 @@
 import axios from "axios";
-import { useEffect, useState, useLayoutEffect } from "react";
+import { useEffect, useState, useLayoutEffect, createContext } from "react";
 import "./App.css";
 import Cards from "./components/Cards";
 import Search from "./components/Search";
+import Back from "./Back2.jpg";
+import ModalDetails from "./components/ModalDetails";
 
+export const DataContext = createContext();
 function App() {
-  const [onSearch, setonSearch] = useState(false);
   const [pokemonList, setPokemons] = useState([
     {
       name: "Default",
@@ -23,6 +25,7 @@ function App() {
           "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/9.png",
         front_shiny_female: null,
       },
+      details: { types: [] },
     },
   ]);
 
@@ -60,22 +63,25 @@ function App() {
     }
   }
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     getPokemons();
   }, []);
-  console.log(pokemonList);
+
   const MapperList = pokemonList.map((el) => {
-    return <Cards images={el.images} name={el.name} />;
+    return <Cards images={el.images} name={el.name} details={el.details} />;
   });
 
   return (
-    <div className="App">
-      <h1>Kanto Region Pokedex</h1>
-      <Search arr={pokemonList} setPokemons={setPokemons} />
-      <div style={{ background: "#000", width: "100%", zIndex: "1" }}>
-        <div className="cards_container">{MapperList}</div>
+    <DataContext.Provider value={pokemonList}>
+      <div className="App">
+        <h1>Kanto Region Pokedex</h1>
+        <Search arr={pokemonList} setPokemons={setPokemons} />
+        <div>
+          <div className="cards_container">{MapperList}</div>
+        </div>
+        <ModalDetails />
       </div>
-    </div>
+    </DataContext.Provider>
   );
 }
 
