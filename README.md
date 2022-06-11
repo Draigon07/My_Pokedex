@@ -2,5 +2,6 @@
 
 ## Pending:
 
-Agregar los tipos y colores
 Problema con el search
+Stats and movesof big card
+responsive design

@@ -2,12 +2,15 @@ import axios from "axios";
 import { useEffect, useState, useLayoutEffect, createContext } from "react";
 import "./App.css";
 import Cards from "./components/Cards";
-import Search from "./components/Search";
 
-import ModalDetails from "./components/ModalDetails";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+
+import Home from "./components/Home";
+import Details from "./components/Details";
 
 export const DataContext = createContext();
 function App() {
+  const [currentDetails, setDetails] = useState({});
   const [pokemonList, setPokemons] = useState([
     {
       name: "Default",
@@ -67,20 +70,47 @@ function App() {
     getPokemons();
   }, []);
 
-  const MapperList = pokemonList.map((el) => {
-    return <Cards images={el.images} name={el.name} details={el.details} />;
+  function setCurrentDetails(name) {
+    const match = pokemonList.find((el) => el.name == name);
+    setDetails(match);
+  }
+
+  const MapperList = pokemonList.map((el, index) => {
+    return (
+      <div key={index}>
+        <Link to={`details/:${el.name}`}>
+          <Cards
+            images={el.images}
+            name={el.name}
+            details={el.details}
+            setCurrentDetails={setCurrentDetails}
+          />
+          ;
+        </Link>
+      </div>
+    );
   });
 
   return (
     <DataContext.Provider value={pokemonList}>
-      <div className="App">
-        <h1>Kanto Region Pokedex</h1>
-        <Search arr={pokemonList} setPokemons={setPokemons} />
-        <div>
-          <div className="cards_container">{MapperList}</div>
-        </div>
-        <ModalDetails />
-      </div>
+      <Router>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Home
+                pokemonList={pokemonList}
+                setPokemons={setPokemons}
+                MapperList={MapperList}
+              />
+            }
+          />
+          <Route
+            path="/details/:id"
+            element={<Details currentDetails={currentDetails} />}
+          />
+        </Routes>
+      </Router>
     </DataContext.Provider>
   );
 }
