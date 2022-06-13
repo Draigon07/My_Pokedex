@@ -1,12 +1,27 @@
 import React from "react";
 import Search from "./Search";
-export default function Home({ pokemonList, setPokemons, MapperList }) {
+export default function Home({
+  pokemonList,
+  setPokemons,
+  MapperList,
+  MapperSearch,
+  onSearch,
+  setOnSearch,
+}) {
+  console.log(MapperList);
   return (
     <div className="home_container">
       <h1>Kanto Region Pokedex</h1>
-      <Search arr={pokemonList} setPokemons={setPokemons} />
+      <Search
+        arr={pokemonList}
+        setPokemons={setPokemons}
+        onSearch={onSearch}
+        setOnSearch={setOnSearch}
+      />
       <div>
-        <nav className="cards_container">{MapperList}</nav>
+        <nav className="cards_container">
+          {onSearch.length > 0 ? MapperSearch : MapperList}
+        </nav>
       </div>
     </div>
   );

@@ -11,6 +11,7 @@ import Details from "./components/Details";
 export const DataContext = createContext();
 function App() {
   const [currentDetails, setDetails] = useState({});
+  const [onSearch, setOnSearch] = useState([]);
   const [pokemonList, setPokemons] = useState([
     {
       name: "Default",
@@ -83,8 +84,24 @@ function App() {
             name={el.name}
             details={el.details}
             setCurrentDetails={setCurrentDetails}
+            setOnSearch={setOnSearch}
           />
-          ;
+        </Link>
+      </div>
+    );
+  });
+
+  const MapperSearch = onSearch.map((el, index) => {
+    return (
+      <div key={index}>
+        <Link to={`details/:${el.name}`}>
+          <Cards
+            images={el.images}
+            name={el.name}
+            details={el.details}
+            setCurrentDetails={setCurrentDetails}
+            setOnSearch={setOnSearch}
+          />
         </Link>
       </div>
     );
@@ -101,6 +118,9 @@ function App() {
                 pokemonList={pokemonList}
                 setPokemons={setPokemons}
                 MapperList={MapperList}
+                MapperSearch={MapperSearch}
+                onSearch={onSearch}
+                setOnSearch={setOnSearch}
               />
             }
           />

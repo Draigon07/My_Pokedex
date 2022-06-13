@@ -1,6 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
 
-export default function Cards({ name, images, details, setCurrentDetails }) {
+export default function Cards({
+  name,
+  images,
+  details,
+  setCurrentDetails,
+  setOnSearch,
+}) {
   for (let i = 0; i < images.length; i++) {
     const element = images[i];
     console.log(element);
@@ -53,6 +59,7 @@ export default function Cards({ name, images, details, setCurrentDetails }) {
       className="poke-card"
       onClick={() => {
         setCurrentDetails(name);
+        setOnSearch([]);
       }}
     >
       <h2 style={{ fontSize: "1rem" }}>{name}</h2>
