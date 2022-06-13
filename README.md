@@ -3,5 +3,5 @@
 ## Pending:
 
 Problema con el search
-Stats and movesof big card
+Stats and moves of big card
 responsive design

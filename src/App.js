@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState, useLayoutEffect, createContext } from "react";
+import { useEffect, useState, createContext } from "react";
 import "./App.css";
 import Cards from "./components/Cards";
 
@@ -59,7 +59,6 @@ function App() {
           return await getPokemonDetails(el.url, el.name);
         })
       );
-
       return setPokemons(getAllDetails);
     } catch (e) {
       console.error(e);

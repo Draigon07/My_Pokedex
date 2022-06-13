@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import { BrowserRouter as Link } from "react-router-dom";
 
 export default function Cards({ name, images, details, setCurrentDetails }) {
   for (let i = 0; i < images.length; i++) {
