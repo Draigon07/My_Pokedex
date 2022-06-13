@@ -71,7 +71,7 @@ export default function Details({ currentDetails }) {
           <li className="default_line"></li>
           <li className="default_line"></li>
           <li className="default_line"></li>
-          <li className="default_line"></li>
+          <li className="line"></li>
           <li className="line"></li>
           <li className="line"></li>
           <li className="line"></li>
