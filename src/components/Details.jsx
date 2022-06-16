@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 export default function Details({ currentDetails }) {
   const [statsArr, setStats] = useState([{ name: "default", base: 23 }]);
@@ -12,15 +12,22 @@ export default function Details({ currentDetails }) {
     return { name: el.ability.name };
   });
 
-  console.log(currentDetails);
   const entries = Object.entries(currentDetails.images);
-  const Map = entries.map((el, index) => (
+
+  const clear = entries.filter(
+    (e) =>
+      e[1] != null &&
+      e[0] !== "front_shiny_female" &&
+      e[0] !== "back_shiny_female" &&
+      e[0] !== "front_female" &&
+      e[0] !== "back_female"
+  );
+
+  const Map = clear.map((el, index) => (
     <>
-      {el[1] !== null ? (
-        <picture key={index}>
-          <img src={el[1]} alt={el[0]}></img>
-        </picture>
-      ) : null}
+      <picture key={index}>
+        <img src={el[1]} alt={el[0]}></img>
+      </picture>
     </>
   ));
 
@@ -152,8 +159,6 @@ export default function Details({ currentDetails }) {
   useEffect(() => {
     getStats();
   }, []);
-
-  console.log(statsArr);
 
   return (
     <div className="big_card_container">

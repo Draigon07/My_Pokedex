@@ -1,12 +1,9 @@
-import React, { useState } from "react";
-
 export default function Search({ arr, onSearch, setOnSearch }) {
   function match(txt) {
     const found = arr.filter((el) => el.name.toLowerCase().includes(txt));
     setOnSearch(found);
   }
 
-  console.log(onSearch);
   return (
     <div className="search_pokemon_container">
       <form>

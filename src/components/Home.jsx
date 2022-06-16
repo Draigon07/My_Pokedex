@@ -8,7 +8,6 @@ export default function Home({
   onSearch,
   setOnSearch,
 }) {
-  console.log(MapperList);
   return (
     <div className="home_container">
       <h1>Kanto Region Pokedex</h1>

@@ -9,7 +9,6 @@ export default function Cards({
 }) {
   for (let i = 0; i < images.length; i++) {
     const element = images[i];
-    console.log(element);
   }
 
   const typesArr = details.types.map((el) => {
