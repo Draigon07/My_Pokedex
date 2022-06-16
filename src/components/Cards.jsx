@@ -1,5 +1,3 @@
-import React, { useContext, useEffect, useState } from "react";
-
 export default function Cards({
   name,
   images,
@@ -7,10 +5,6 @@ export default function Cards({
   setCurrentDetails,
   setOnSearch,
 }) {
-  for (let i = 0; i < images.length; i++) {
-    const element = images[i];
-  }
-
   const typesArr = details.types.map((el) => {
     const lowered = el.type.name;
     const MATCH_COLOR = {
